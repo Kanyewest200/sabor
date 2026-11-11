@@ -1,0 +1,9 @@
+*.env 
+*. tsbuildinfo
+*.log
+
+dists/
+build/
+logs/
+node_ modules/
+
