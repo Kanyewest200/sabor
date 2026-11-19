@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const ProdutoController = require('../controllers/product.controller.js');
 
-const uploadDir = path.join(__dirname,'..', '/uploads');//3.definir pastar
+const uploadDir = path.join(__dirname, '..', '/uploads');//3.definir pastar
 //4.verifica se a pastat  de aquirvos já existe  no servidor
 if (!fs.existsSync(uploadDir)) {
     fs.mkdir(uploadDir);//5...se não existir ele cria ela 
@@ -35,7 +35,7 @@ const upload = multer({
 //rotas para uso do Controlador de vendedores
 router.post("/produto/cadastrar", upload.single("image"), ProdutoController.cadastrar);
 router.get("/produto/listar", ProdutoController.listar);
-router.post("/produto/atualizar/:id", ProdutoController.atualizar);
+router.post("/produto/atualizar/:id", upload.single("image"), ProdutoController.atualizar);
 router.post("/produto/apagar/:id", ProdutoController.apagar);
 
 module.exports = router;

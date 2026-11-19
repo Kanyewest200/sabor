@@ -4,13 +4,13 @@ formEntrar.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const dados = new FormData(formEntrar);
-    const objeto = Object.fromEntries(dados);
+    const objeto = Object.fromEntries(dados);//!
 
     try {
         const response = await fetch("http://localhost:3000/api/vendedor/entrar", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(objeto)
+            headers: { "Content-Type": "application/json" },//!
+            body: JSON.stringify(objeto)//!
         });
 
         const resultado = await response.json();
@@ -27,6 +27,7 @@ formEntrar.addEventListener("submit", async (event) => {
         //Zera todos os campos do formúlario HTML
         formEntrar.reset();
 
+      window.location.href= 'painel.html';  
     } catch (error) {
         console.log(error);
     }
